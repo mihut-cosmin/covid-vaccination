@@ -9,4 +9,6 @@ public interface TestEventService {
     List<TestEvent> getAllTestEvents();
 
     void saveTestEvent(TestEvent testEvent);
+
+    List<TestEvent> getTestEventsByUserId(int user_id);
 }

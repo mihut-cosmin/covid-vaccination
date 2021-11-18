@@ -19,7 +19,7 @@
         <div class="form-group row">
             <div class="col-md-4 mt-5">
                 <label for="user">Select User</label>
-                <select class="form-control selectpicker" th:field="*{user}" id="user">
+                <select class="form-control selectpicker" th:field="*{user}" th:required="required" id="user">
                     <option value="">Nothing selected</option>
                     <option th:each="user: ${users}" th:value="${user.id}" th:text="|${user.firstName} ${user.lastName}|">user</option>
                 </select>
@@ -29,7 +29,7 @@
             <div class="col-md-4 mt-5">
                 <label for="date">Select Date</label>
                 <div class="input-group date">
-                    <input type="text" class="form-control" id="date" autocomplete="off" th:field="*{date}"/>
+                    <input type="text" class="form-control" id="date" autocomplete="off" th:field="*{date}" th:required="required" />
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
@@ -39,7 +39,7 @@
         <div class="form-group row">
             <div class="col-md-4 mt-5">
                 <label for="result">Select Result</label>
-                <select class="form-control selectpicker" th:field="*{result}" id="result">
+                <select class="form-control selectpicker" th:field="*{result}" th:required="required" id="result">
                     <option value="">Nothing selected</option>
 
                     <option th:each="result: ${possibleTestResults}" th:value="${result}" th:text="${result}">result</option>

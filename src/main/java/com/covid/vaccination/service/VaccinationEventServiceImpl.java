@@ -22,4 +22,9 @@ public class VaccinationEventServiceImpl implements VaccinationEventService {
     public void saveVaccinationEvent(VaccinationEvent vaccinationEvent) {
         this.vaccinationEventRepository.save(vaccinationEvent);
     }
+
+    @Override
+    public List<VaccinationEvent> getVaccinationEventsByUserId(int user_id) {
+        return vaccinationEventRepository.findByUserId(user_id);
+    }
 }

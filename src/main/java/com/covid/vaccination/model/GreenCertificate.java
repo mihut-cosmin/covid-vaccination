@@ -31,4 +31,60 @@ public class GreenCertificate extends BaseEntity{
 
     @Column(name = "end_date")
     private Date endDate;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getCertificateId() {
+        return certificateId;
+    }
+
+    public void setCertificateId(String certificateId) {
+        this.certificateId = certificateId;
+    }
+
+    public VaccinationEvent getVaccinationEvent() {
+        return vaccinationEvent;
+    }
+
+    public void setVaccinationEvent(VaccinationEvent vaccinationEvent) {
+        this.vaccinationEvent = vaccinationEvent;
+    }
+
+    public RecoveryEvent getRecoveryEvent() {
+        return recoveryEvent;
+    }
+
+    public void setRecoveryEvent(RecoveryEvent recoveryEvent) {
+        this.recoveryEvent = recoveryEvent;
+    }
+
+    public TestEvent getTestEvent() {
+        return testEvent;
+    }
+
+    public void setTestEvent(TestEvent testEvent) {
+        this.testEvent = testEvent;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 }

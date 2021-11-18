@@ -22,4 +22,9 @@ public class RecoveryEventServiceImpl implements RecoveryEventService {
     public void saveRecoveryEvent(RecoveryEvent recoveryEvent) {
         this.recoveryEventRepository.save(recoveryEvent);
     }
+
+    @Override
+    public List<RecoveryEvent> getRecoveryEventsByUserId(int user_id) {
+        return recoveryEventRepository.findByUserId(user_id);
+    }
 }

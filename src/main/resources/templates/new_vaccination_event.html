@@ -19,7 +19,7 @@
             <div class="form-group row">
                 <div class="col-md-4 mt-5">
                     <label for="user">Select User</label>
-                    <select class="form-control selectpicker" th:field="*{user}" id="user">
+                    <select class="form-control selectpicker" th:field="*{user}" th:required="required"  id="user">
                         <option value="">Nothing selected</option>
                         <option th:each="user: ${users}" th:value="${user.id}" th:text="|${user.firstName} ${user.lastName}|">user</option>
                     </select>
@@ -29,7 +29,7 @@
                 <div class="col-md-4 mt-5">
                     <label for="date">Select Date</label>
                     <div class="input-group date">
-                        <input type="text" class="form-control" id="date" autocomplete="off" th:field="*{date}"/>
+                        <input type="text" class="form-control" id="date" autocomplete="off" th:field="*{date}" th:required="required" />
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                         </div>
@@ -39,7 +39,7 @@
             <div class="form-group row">
                 <div class="col-md-4 mt-5">
                     <label for="vaccine">Select Vaccine</label>
-                    <select class="form-control selectpicker" th:field="*{vaccine}" id="vaccine">
+                    <select class="form-control selectpicker" th:field="*{vaccine}" th:required="required" id="vaccine">
                         <option value="">Nothing selected</option>
                         <option th:each="vaccine: ${vaccines}" th:value="${vaccine.id}" th:text="${vaccine.name}">vaccine</option>
                     </select>
@@ -49,7 +49,7 @@
             <div class="form-group row">
                 <div class="col-md-4 mt-5">
                     <label for="dose_number">Select Dose Number</label>
-                    <select class="form-control selectpicker" th:field="*{doseNumber}" id="dose_number">
+                    <select class="form-control selectpicker" th:field="*{doseNumber}" th:required="required" id="dose_number">
                     </select>
                 </div>
             </div>

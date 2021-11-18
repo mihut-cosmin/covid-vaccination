@@ -22,4 +22,9 @@ public class TestEventServiceImpl implements TestEventService {
     public void saveTestEvent(TestEvent testEvent) {
         this.testEventRepository.save(testEvent);
     }
+
+    @Override
+    public List<TestEvent> getTestEventsByUserId(int user_id) {
+        return testEventRepository.findByUserId(user_id);
+    }
 }

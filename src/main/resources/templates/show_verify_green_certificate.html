@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <h1>Covid Registry</h1>
+    <hr>
+    <h2>Verify Green Certificate</h2>
+    <form action="#" th:action="@{/verifyGreenCertificate}" th:object="${greenCertificate}" method="POST">
+        <input type="text" th:field="*{certificateId}" th:required="required" placeholder="Certificate ID" class="form-control mb-4 col-4">
+        <button type="submit" class="btn btn-info col-2">Verify Certificate</button>
+    </form>
+</div>
+</body>
+
+</html>

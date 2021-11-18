@@ -9,4 +9,6 @@ public interface RecoveryEventService {
     List<RecoveryEvent> getAllRecoveryEvents();
 
     void saveRecoveryEvent(RecoveryEvent recoveryEvent);
+
+    List<RecoveryEvent> getRecoveryEventsByUserId(int user_id);
 }
