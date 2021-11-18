@@ -56,8 +56,17 @@ public class GreenCertificateController {
             return "error_generate_green_certificate";
         }
         String validity = validateGreenCertificate.getEndDate().after(new Date()) ? "VALID" : "INVALID";
+        String eventType = null;
+        if (validateGreenCertificate.getVaccinationEvent() != null) {
+            eventType = "Vaccination";
+        } else if (validateGreenCertificate.getRecoveryEvent() != null) {
+            eventType = "Recovery";
+        } else if (validateGreenCertificate.getTestEvent() != null) {
+            eventType = "Test";
+        }
         model.addAttribute("greenCertificate", validateGreenCertificate);
         model.addAttribute("validity", validity);
+        model.addAttribute("eventType", eventType);
         return "success_green_certificate";
     }
 
@@ -71,21 +80,25 @@ public class GreenCertificateController {
         List<TestEvent> testEvents = testEventService.getTestEventsByUserId(user.getId().intValue());
         TestEvent testEvent = testEvents.size() > 0 ? testEvents.get(0) : null;
         Calendar calendar = Calendar.getInstance();
+        String eventType = null;
         if(vaccinationEvent != null && (vaccinationEvent.getVaccine().getName().equals("Janssen") || (!vaccinationEvent.getVaccine().getName().equals("Janssen") && (vaccinationEvent.getDoseNumber() == 2)))) {
             greenCertificate.setStartDate(vaccinationEvent.getDate());
             calendar.setTime(greenCertificate.getStartDate());
             calendar.add(Calendar.YEAR, 1);
             greenCertificate.setVaccinationEvent(vaccinationEvent);
+            eventType = "Vaccination";
         } else if (recoveryEvent != null) {
             greenCertificate.setStartDate(recoveryEvent.getDate());
             calendar.setTime(greenCertificate.getStartDate());
             calendar.add(Calendar.DATE, 180);
             greenCertificate.setRecoveryEvent(recoveryEvent);
+            eventType = "Recovery";
         } else if (testEvent != null && testEvent.getResult().equals("Negative")) {
             greenCertificate.setStartDate(testEvent.getDate());
             calendar.setTime(greenCertificate.getStartDate());
             calendar.add(Calendar.HOUR, 72);
             greenCertificate.setTestEvent(testEvent);
+            eventType = "Test";
         } else {
             String errorMsg = "Unable to generate green certificate as user has no valid vaccination, recovery or test event.";
             model.addAttribute("errorMsg", errorMsg);
@@ -103,6 +116,7 @@ public class GreenCertificateController {
         model.addAttribute("greenCertificate", greenCertificate);
         String validity = greenCertificate.getEndDate().after(new Date()) ? "VALID" : "INVALID";
         model.addAttribute("validity", validity);
+        model.addAttribute("eventType", eventType);
         return "success_green_certificate";
     }
 

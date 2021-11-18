@@ -25,6 +25,7 @@
             <th>Last Name</th>
             <th>Email</th>
             <th>CNP</th>
+            <th>Certificate Event</th>
             <th>Start Date</th>
             <th>End Date</th>
         </tr>
@@ -37,6 +38,7 @@
             <td th:text="${greenCertificate.user.lastName}"></td>
             <td th:text="${greenCertificate.user.email}"></td>
             <td th:text="${greenCertificate.user.cnp}"></td>
+            <td th:text="${eventType}"></td>
             <td th:text="${greenCertificate.startDate}"></td>
             <td th:text="${greenCertificate.endDate}"></td>
         </tr>
