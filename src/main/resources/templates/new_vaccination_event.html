@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" integrity="sha512-TQQ3J4WkE/rwojNFo6OJdyu6G8Xe9z8rMrlF9y7xpFbQfW5g8aSWcygCQ4vqRiJqFsDsE1T6MoAOMJkFXlrI9A==" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous"/>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Covid Registry</h1>
+        <hr>
+        <h2>Save Vaccination Event</h2>
+        <form action="#" th:action="@{/saveVaccinationEvent}" th:object="${vaccinationEvent}" method="POST">
+            <div class="form-group row">
+                <div class="col-md-4 mt-5">
+                    <label for="user">Select User</label>
+                    <select class="form-control selectpicker" th:field="*{user}" id="user">
+                        <option value="">Nothing selected</option>
+                        <option th:each="user: ${users}" th:value="${user.id}" th:text="|${user.firstName} ${user.lastName}|">user</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4 mt-5">
+                    <label for="date">Select Date</label>
+                    <div class="input-group date">
+                        <input type="text" class="form-control" id="date" autocomplete="off" th:field="*{date}"/>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4 mt-5">
+                    <label for="vaccine">Select Vaccine</label>
+                    <select class="form-control selectpicker" th:field="*{vaccine}" id="vaccine">
+                        <option value="">Nothing selected</option>
+                        <option th:each="vaccine: ${vaccines}" th:value="${vaccine.id}" th:text="${vaccine.name}">vaccine</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-4 mt-5">
+                    <label for="dose_number">Select Dose Number</label>
+                    <select class="form-control selectpicker" th:field="*{doseNumber}" id="dose_number">
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info col-2">Save</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+            integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
+
+    <script>
+    function sendAjaxRequest() {
+        var vaccine_id = $("#vaccine").val();
+        $.get("/getVaccineDoses?vaccine_id=" + vaccine_id, function( data ) {
+            $("#dose_number").empty();
+            for(i = 1; i <= data; i++) {
+                var option = "<option value=" + i + ">" + i + "</option>";
+                $("#dose_number").append(option);
+            }
+            $("#dose_number").selectpicker("refresh");
+        });
+    }
+    $('.input-group.date').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        endDate: new Date(new Date().setDate(new Date().getDate()))
+    });
+    $("#vaccine").change(function() {
+        sendAjaxRequest();
+    });
+    </script>
+
+</body>
+
+</html>

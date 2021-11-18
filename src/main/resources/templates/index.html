@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>Users</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+    <body>
+    	<div class="container my-2">
+	        
+	        <h1>Users</h1>
+	        <a th:href="@{/showNewUserForm}" class="btn btn-primary btn-sm mb-3">Add User</a>
+            <a th:href="@{/showNewVaccinationEventForm}" class="btn btn-primary btn-sm mb-3">Add Vaccination</a>
+            <a th:href="@{/showNewRecoveryEventForm}" class="btn btn-primary btn-sm mb-3">Add Recovery</a>
+            <a th:href="@{/showNewTestEventForm}" class="btn btn-primary btn-sm mb-3">Add Test</a>
+            <table border="1" class="table table-striped table-responsive-md">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>CNP</th>
+                        <th>email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${listUsers}">
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${user.cnp}"></td>
+                        <td th:text="${user.email}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </body>
+
+</html>
